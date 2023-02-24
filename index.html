@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>XML http request</title>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script>
+      function htmlReturn(data) {
+        return `
+      <div class="flag">
+        <div class="flag-img">
+          <img src="${data.flags.svg}" alt="" />
+          <h2>${data.name}</h2>
+          <p>${data.capital}</p>
+        </div>
+        <hr>
+        <div class="flag-details">
+          <div class="lang">
+            <h3>${data.languages[0].name}</h3>
+            <p>Language</p>
+          </div>
+          <div class="lang">
+            <h3>${data.population}</h3>
+            <p>Population</p>
+          </div>
+          <div class="lang">
+            <h3>${data.demonym}</h3>
+            <p>Currency</p>
+          </div>
+        </div>
+      </div>
+      `;
+      }
+      let htmlData = "";
+      const container = document.getElementById("container");
+      const country = prompt("Enter country name : ");
+      const request = new XMLHttpRequest();
+      request.open("GET", `https://restcountries.com/v2/name/${country}`);
+      request.send();
+
+      request.addEventListener("load", function () {
+        if (country === "india") {
+          const [data1, data] = JSON.parse(this.responseText);
+          htmlData = htmlReturn(data);
+        } else {
+          const [data] = JSON.parse(this.responseText);
+          htmlData = htmlReturn(data);
+        }
+        container.insertAdjacentHTML("afterbegin", htmlData);
+      });
+    </script>
+  </body>
+</html>

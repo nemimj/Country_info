@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    object-fit: cover;
+    box-sizing: border-box;
+    padding: 0;
+}
+body{
+    background-color: bisque;
+    text-align: center;
+}
+
+#container{
+    border-radius: 10px;
+    background-color: white;
+    min-width: 300px;
+    min-height: 300px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.flag-img{
+    padding:0.5rem;
+    margin: auto;
+    border-radius: 10px;
+    width: 263px;
+    text-align: center;
+  
+}
+
+.flag-img img{
+    width: 100%;
+}
+
+
+.flag-details{
+   padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+}
